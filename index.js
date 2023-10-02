@@ -48,3 +48,21 @@ addColButton.addEventListener("click", () => {
 
     cols += 1;
 });
+
+const removeRowButton = document.body.querySelector("#rem-row");
+removeRowButton.addEventListener("click", () => {
+    if (rows > 0){
+        table.deleteRow(rows - 1);
+        rows -=1;
+    }
+});
+
+const removeColumnButton = document.body.querySelector("#rem-col");
+removeColumnButton.addEventListener("click", () => {
+    if (cols > 0){
+        for (let i = 0; i < rows; i++) {
+            table.rows[i].deleteCell(cols - 1);
+        }
+        cols -= 1;
+    }
+});

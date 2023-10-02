@@ -65,6 +65,17 @@ allColorButton.addEventListener("click", () => {
     }
 });
 
+const removeRowButton = document.body.querySelector("#rem-row");
+removeRowButton.addEventListener("click", () => {
+    if (rows > 0) {
+        table.deleteRow(rows - 1);
+        rows -= 1;
+        if (rows === 0) {
+            cols = 0;
+        }
+    }
+});
+
 const allUncoloredButton = document.body.querySelector("#color-uncolored");
 allUncoloredButton.addEventListener("click", () => {
     const color = document.body.querySelector("#color-picker").value;
@@ -82,6 +93,19 @@ clearAllButton.addEventListener("click", () => {
     for(let i = 0; i < rows; i++) {
         for(let j = 0; j < cols; j++) {
             table.rows[i].cells[j].setAttribute("bgcolor", "FFFFFF");
+        }
+    }
+});
+
+const removeColumnButton = document.body.querySelector("#rem-col");
+removeColumnButton.addEventListener("click", () => {
+    if (cols > 0) {
+        for (let i = 0; i < rows; i++) {
+            table.rows[i].deleteCell(cols - 1);
+        }
+        cols -= 1;
+        if (cols === 0) {
+            rows = 0;
         }
     }
 });
